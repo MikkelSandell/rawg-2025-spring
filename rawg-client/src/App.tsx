@@ -10,7 +10,7 @@ function App() {
         lg: `"header header" "aside main"`,
       }}
     >
-      <GridItem pl="2" bg="orange.300" area={"header"}>
+      <GridItem pl="2" area={"header"}>
         <NavBar />
       </GridItem>
       <Show above="lg">
@@ -18,9 +18,8 @@ function App() {
           aside
         </GridItem>
       </Show>
-      <GridItem pl="2" bg="green.300" area={"main"}>
-        Main
-        <GameGrid/>
+      <GridItem pl="2" area={"main"}>
+        <GameGrid />
       </GridItem>
     </Grid>
   );
