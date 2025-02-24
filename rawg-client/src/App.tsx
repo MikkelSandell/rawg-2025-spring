@@ -32,7 +32,7 @@ function App() {
         <GridItem pl="2" area={"aside"}>
           <GenreList
             onSelectedGenre={handleOnSelectedGenre}
-            selectGenre={selectedGenre}
+            selectedGenre={selectedGenre}
           />
         </GridItem>
       </Show>

@@ -1,27 +1,35 @@
-import { Button, Heading, HStack, Image, List, ListItem, Spinner, Text } from "@chakra-ui/react";
+import {
+  Button,
+  Heading,
+  HStack,
+  Image,
+  List,
+  ListItem,
+  Spinner,
+} from "@chakra-ui/react";
 import useGenres, { Genre } from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
 
-interface Props{
-  onSelectedGenre: (genre: Genre) => void;
-  selectGenre: Genre | null
-  
+interface Props {
+  onSelectedGenre: (genre: Genre | null) => void;
+  selectedGenre: Genre | null;
 }
 
-const GenreList = ({onSelectedGenre, selectGenre}: Props) => {
+const GenreList = ({ onSelectedGenre, selectedGenre }: Props) => {
   const { data: genres, isLoading, error } = useGenres();
 
-  const getColor= (genre: Genre) =>
-    selectGenre?.id === genre.id ? "yellow" :"gray"
+  const getColor = (genre: Genre) =>
+    selectedGenre?.id === genre.id ? "yellow" : "gray";
 
-  if(error) return null;
+  if (error) return null;
 
-  if(isLoading) return <Spinner></Spinner>
-
+  if (isLoading) return <Spinner />;
 
   return (
     <>
-      <Heading>Genres</Heading>
+      <Button variant="link" onClick={() => onSelectedGenre(null)}>
+        <Heading>Genres</Heading>
+      </Button>
       <List>
         {genres.map((genre) => (
           <ListItem key={genre.id} paddingY="5px">
@@ -33,12 +41,12 @@ const GenreList = ({onSelectedGenre, selectGenre}: Props) => {
                 objectFit="cover"
               />
               <Button
-              colorScheme={getColor(genre)}
-              variant="link"
-              fontSize="lg"
-              onClick={() => onSelectedGenre(genre)}>
-              
-              <Text>{genre.name}</Text>
+                colorScheme={getColor(genre)}
+                variant="link"
+                fontSize="lg"
+                onClick={() => onSelectedGenre(genre)}
+              >
+                {genre.name}
               </Button>
             </HStack>
           </ListItem>
