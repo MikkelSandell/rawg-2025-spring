@@ -7,6 +7,8 @@ import { ParentPlatform } from "./entities/ParentPlatform";
 import { Store } from "./entities/Store";
 
 async function insertData() {
+// conect to mysql server and crate db if no exist rawgDatabass
+
   await AppDataSource.initialize();
 
   const rawData = fs.readFileSync("games.json", "utf-8");
@@ -23,7 +25,9 @@ async function insertData() {
   const platformRepo = AppDataSource.getRepository(ParentPlatform);
   const storeRepo = AppDataSource.getRepository(Store);
 
-  //TODO: drop and recreate the database
+  //TODO: 
+  //  the seeder is dependent on the existing databass
+  // drop and recreate the database
 
   await gameRepo.delete({});
   console.log("Games deleted");
