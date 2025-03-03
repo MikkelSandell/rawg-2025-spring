@@ -1,1 +1,5 @@
+npm init -y
+npm i -d ts-node #dowload the ts-node liberary
+npx tsc --init #to get the tconfig.json
 npm run dev #kør applicationen
+npm install typeorm reflect-metadata mysql2 # to use typeorm
