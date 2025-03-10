@@ -7,3 +7,6 @@ npm install typeorm reflect-metadata mysql2 # to use typeorm
 npm start #to run the server/db
 
 npm i -D @types/cors
+
+docker compose up -d #can add -build if there is a new image
+docker compose down #to close it
