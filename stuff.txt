@@ -4,5 +4,6 @@ npx tsc --init #to get the tconfig.json
 npm run dev #kør applicationen
 npm install typeorm reflect-metadata mysql2 # to use typeorm
 
+npm start #to run the server/db
 
 npm i -D @types/cors
