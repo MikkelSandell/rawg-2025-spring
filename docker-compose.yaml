@@ -24,7 +24,7 @@ services:
     networks:
       - backend
     volumes:
-     - ./seeder:/app #mounted volume
+      - ./seeder:/app
 
   rawg-server:
     container_name: rawg-server
@@ -41,7 +41,7 @@ services:
       - backend
       - frontend
     volumes:
-     - ./rawg-server:/app
+      - ./rawg-server:/app
 
   rawg-client:
     container_name: rawg-client
@@ -57,8 +57,8 @@ services:
     networks:
       - frontend
     volumes:
-     - ./rawg-client:/app
-     - /app/node_modules #exclude it from the mound
+      - ./rawg-client:/app
+      - /app/node_modules
 
 volumes:
   mysql_data:
