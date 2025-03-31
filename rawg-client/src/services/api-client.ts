@@ -1,6 +1,12 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 
-const apiClient = axios.create({
+export interface Response<T> {
+  count: number;
+  results: T[];
+}
+
+
+const axiosInstance = axios.create({
   // baseURL: "https://api.rawg.io/api",
   baseURL: import.meta.env.VITE_API_URL,
   //params: {
@@ -8,8 +14,17 @@ const apiClient = axios.create({
   //},
 });
 
-export default apiClient;
-export interface Response<T> {
-  count: number;
-  results: T[];
-}
+class ApiClient<T> {
+  endpoint: string;
+
+  constructor(endpoint: string) {
+    this.endpoint = endpoint;
+  }
+
+  getAll = (config?: AxiosRequestConfig) => axiosInstance.get<Response<T>>(this.endpoint, config).then((res) => res.data);
+};
+
+
+
+export default ApiClient;
+
