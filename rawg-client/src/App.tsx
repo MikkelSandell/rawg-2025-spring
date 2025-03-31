@@ -9,6 +9,7 @@ import useStores, { Store } from "./hooks/useStores";
 import CustomList from "./components/CustomList";
 import SortSelector from "./components/SortSelector";
 import GameHeading from "./components/GameHeading";
+import GenreList from "./components/GenreList";
 
 export interface GameQuery {
   genre: Genre | null;
@@ -34,26 +35,27 @@ function App() {
 
   return (
     <Grid
+      paddingX="4"
       templateAreas={{
         base: `"header" "main"`,
         lg: `"header header" "aside main"`,
       }}
       templateColumns={{ base: "1fr", lg: "200px 1fr" }}
     >
-      <GridItem pl="2" area={"header"}>
+      <GridItem area={"header"}>
         <NavBar onSearch={handleOnSearch} />
       </GridItem>
       <Show above="lg">
-        <GridItem pl="2" area={"aside"}>
-          {/* <GenreList
+        <GridItem area={"aside"}>
+          <GenreList
             onSelectedGenre={handleOnSelectedGenre}
             selectedGenre={gameQuery.genre}
           />
-          <StoreList
+          {/* <StoreList
             onSelectedStore={handleSelectedStore}
             selectedStore={gameQuery.store}
           /> */}
-          <CustomList
+          {/* <CustomList
             title="Genres"
             onSelectedItem={handleOnSelectedGenre}
             selectedItem={gameQuery.genre}
@@ -64,10 +66,10 @@ function App() {
             onSelectedItem={handleSelectedStore}
             selectedItem={gameQuery.store}
             useDataHook={useStores}
-          />
+          /> */}
         </GridItem>
       </Show>
-      <GridItem pl="2" area={"main"}>
+      <GridItem area={"main"}>
         <Box paddingLeft={2}>
           <GameHeading gameQuery={gameQuery} />
           <HStack>
@@ -80,8 +82,8 @@ function App() {
               onSelectSortOrder={handleOnSelectedSortOrder}
             />
           </HStack>
+          <GameGrid gameQuery={gameQuery} />
         </Box>
-        <GameGrid gameQuery={gameQuery} />
       </GridItem>
     </Grid>
   );
