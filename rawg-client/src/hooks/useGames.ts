@@ -17,7 +17,7 @@ const apiClient = new ApiClient<Game>("/games");
 const useGames = (gameQuery: GameQuery) =>
   useInfiniteQuery<Response<Game>, Error>({
     queryKey: ["games", gameQuery],
-    queryFn: ({pageParam = 1}) =>
+    queryFn: ({ pageParam = 1 }) =>
       apiClient.getAll({
         params: {
           genres: gameQuery.genre?.slug,

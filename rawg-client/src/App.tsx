@@ -46,26 +46,18 @@ function App() {
       </GridItem>
       <Show above="lg">
         <GridItem area={"aside"}>
-          {/* <GenreList
-            onSelectedGenre={handleOnSelectedGenre}
-            selectedGenre={gameQuery.genre}
-          />
-           <StoreList
-            onSelectedStore={handleSelectedStore}
-            selectedStore={gameQuery.store}
-          /> */}
-           <CustomList
+          <CustomList
             title="Genres"
             onSelectedItem={handleOnSelectedGenre}
             selectedItem={gameQuery.genre}
             useDataHook={useGenres}
           />
-           <CustomList
+          <CustomList
             title="Stores"
             onSelectedItem={handleSelectedStore}
             selectedItem={gameQuery.store}
             useDataHook={useStores}
-          />  
+          />
         </GridItem>
       </Show>
       <GridItem area={"main"}>

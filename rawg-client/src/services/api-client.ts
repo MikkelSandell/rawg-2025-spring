@@ -6,26 +6,25 @@ export interface Response<T> {
   results: T[];
 }
 
-
 const axiosInstance = axios.create({
   // baseURL: "https://api.rawg.io/api",
   baseURL: import.meta.env.VITE_API_URL,
-  //params: {
-  //  key: import.meta.env.VITE_API_KEY,
-  //},
+  // params: {
+  //   key: import.meta.env.VITE_API_KEY,
+  // },
 });
 
 class ApiClient<T> {
-  endpoint: string;
+  private endpoint: string;
 
   constructor(endpoint: string) {
     this.endpoint = endpoint;
   }
 
-  getAll = (config?: AxiosRequestConfig) => axiosInstance.get<Response<T>>(this.endpoint, config).then((res) => res.data);
-};
-
-
+  getAll = (config?: AxiosRequestConfig) =>
+    axiosInstance
+      .get<Response<T>>(this.endpoint, config)
+      .then((res) => res.data);
+}
 
 export default ApiClient;
-
