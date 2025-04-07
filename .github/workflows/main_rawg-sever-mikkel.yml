@@ -7,6 +7,9 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'rawg-sever/**'
+      - '.github/workflows/main_rawg-sever-mikkel.yml'
   workflow_dispatch:
 
 jobs:
@@ -25,12 +28,15 @@ jobs:
 
       - name: npm install, build, and test
         run: |
+          cd rawg-sever
           npm install
           npm run build --if-present
           npm run test --if-present
 
       - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
+        run: |
+          cd rawg-sever
+          zip -r ../release.zip .
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
