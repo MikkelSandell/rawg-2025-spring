@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import ApiClient, { Response } from "../services/api-client";
-import stores from "../data/stores";
+import ApiClient, { Response } from "../../services/api-client";
+
 import ms from "ms";
+import stores from "./stores";
 
 export interface Store {
   id: number;
