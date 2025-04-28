@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
+import ms from "ms";
 import ApiClient from "../../services/api-client";
 import { Response } from "../../services/api-client";
-import ms from "ms";
 import genres from "./genres";
 
 export interface Genre {
